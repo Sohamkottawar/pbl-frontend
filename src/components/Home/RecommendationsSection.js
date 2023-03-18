@@ -89,6 +89,9 @@ function RecommendationsSection() {
             </p>
           </div>
         ))}
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   );

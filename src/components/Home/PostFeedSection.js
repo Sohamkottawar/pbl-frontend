@@ -1,5 +1,4 @@
-import React from "react";
-import Modal from "../Post/Modal"
+import PostModal from "../Post/Modal"
 
 function PostFeedSection() {
   // Dummy data for posts
@@ -58,7 +57,7 @@ function PostFeedSection() {
 
   return (
     <div className="">
-      <Modal></Modal>
+      <PostModal />
       {/* Title */}
       <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Feed</h3>
 
@@ -103,7 +102,7 @@ function PostFeedSection() {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-heart"
+                  className="bi bi-heart"
                   viewBox="0 0 16 16"
                 >
                   {" "}
@@ -117,7 +116,7 @@ function PostFeedSection() {
                   width="17"
                   height="17"
                   fill="currentColor"
-                  class="bi bi-chat"
+                  className="bi bi-chat"
                   viewBox="0 0 16 16"
                 >
                   {" "}
@@ -245,6 +244,8 @@ function PostFeedSection() {
             </div>
           </div>
         ))}
+        <br />
+        <br />
       </div>
     </div>
   );
