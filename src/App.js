@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar, Footer } from './components';
+import { Navbar, Footer, ToastContainer } from './components';
 import { HomePage, Auth, ProfilePage, Recommendations } from './pages';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route index element={<HomePage />} />
