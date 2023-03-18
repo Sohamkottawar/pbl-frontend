@@ -86,44 +86,45 @@ const PostModal = ({ isOpen, onClose }) => {
                         ></textarea>
                       </div>
 
-                                            <div className="mt-4">
-                                                <label htmlFor="tags" className="block text-sm font-medium text-gray-700">
-                                                    Tags
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name="tags"
-                                                    id="tags"
-                                                    className="mt-1 block w-full border-gray-300 rounded-md shadow-lg focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-                                                    placeholder="Enter tags"
-                                                    value={tags}
-                                                    onChange={(e) => setTags(e.target.value)}
-                                                />
-                                            </div>
+                      <div className="mt-4">
+                        <label htmlFor="tags" className="block text-sm font-medium text-gray-700">
+                          Tags
+                        </label>
+                        <input
+                          type="text"
+                          name="tags"
+                          id="tags"
+                          className="mt-1 block w-full border-gray-300 rounded-md shadow-lg focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                          placeholder="Enter tags"
+                          value={tags}
+                          onChange={(e) => setTags(e.target.value)}
+                        />
+                      </div>
 
 
-                                <div className="mt-6">
-                                    <button
-                                        type="submit"
-                                        className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-                                        // onClick={handleCreatePost}
-                                    >
-                                        Create Post
-                                    </button>
-                                </div>
-                                </form>
-                        </div>
-                    </div>
-                    </div>
+                      <div className="mt-6">
+                        <button
+                          type="submit"
+                          className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                        // onClick={handleCreatePost}
+                        >
+                          Create Post
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
 
 
 
-                    </div>
-                    </div>
-                    </div>
+            </div>
+          </div>
+        </div>
 
-)
-
+      )}
+    </>
+  );
 }
 
 export default PostModal;

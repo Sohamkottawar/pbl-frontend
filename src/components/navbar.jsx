@@ -53,7 +53,7 @@ function Navbar() {
               </button>
               <div className='relative flex flex-col justify-center'>
                 <img alt='Abhishek_profile' src={profile_pic} className={`w-10 h-10 rounded-full ml-6 border-2 border-transparent hover:border-blue-300 ring-4 ring-offset-2 ring-transparent ${profileOpen && 'ring-blue-600'}`} onClick={() => setProfileOpen(prevState => !prevState)} />
-                <div className={`absolute right-0 top-full mt-3 w-full w-64 p-3 bg-white rounded-lg shadow-xl border border-gray-300 ${!profileOpen && 'hidden'}`}>
+                <div className={`absolute right-0 top-full mt-3 w-64 p-3 bg-white rounded-lg shadow-xl border border-gray-300 ${!profileOpen && 'hidden'}`}>
                   <div className='flex items-center'>
                     <img alt='Abhishek_profile' src={profile_pic} className='rounded-full w-16 h-16' />
                     <div className='flex flex-col justify-center flex-1 pl-3'>
