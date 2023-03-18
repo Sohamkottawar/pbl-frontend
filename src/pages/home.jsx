@@ -1,7 +1,7 @@
 function HomePage() {
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1 className="text-red-400 text-4xl">Home Page</h1>
     </div>
   );
 }
