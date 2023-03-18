@@ -1,8 +1,9 @@
 import AliceCarousel from 'react-alice-carousel';
+import ContactModal from "../components/ContactModal";
 import 'react-alice-carousel/lib/alice-carousel.css';
 import profile_banner from '../assets/images/profile_banner.jpeg';
 import profile_pic from '../assets/images/profile_pic.jpeg';
-
+import { useState } from 'react';
 const posts = [
   {
     id: 1,
@@ -63,8 +64,10 @@ function ProfilePage() {
     1024: { items: 3 },
 }
   const handleDragStart = (e) => e.preventDefault();
+  const [openPost, setOpenPost] = useState(false);
 
   return (
+    <>
     <main className='mx-auto my-10 rounded-lg md:w-3/5 w-11/12 border border-gray-500 shadow-lg'>
       <img alt='profile_banner_image' src={profile_banner} className='w-full max-h-[180px] object-cover' />
       <div className='px-4 mb-4'>
@@ -82,7 +85,7 @@ function ProfilePage() {
           <div className='md:w-1/2 w-full border-r border-transparent'>
             <span className='text-gray-500'>@username</span>
             <span className='mx-2 text-gray-500'>•</span>
-            <span className='text-blue-400 font-medium underline'>Contact Details</span>
+            <span onClick={() => setOpenPost(prevState => !prevState)} className='text-blue-400 font-medium hover:underline cursor-pointer'>Contact Details</span>
             <p className='mt-1 text-gray-700 tracking-wide'>🎂 {'25/10/2002'}</p>
           </div>
           <div className='md:w-1/2 w-full md:border-l md:border-gray-300 border-l-0'>
@@ -175,7 +178,10 @@ function ProfilePage() {
 </div>
 
       </div>
+
     </main>
+    {openPost && <ContactModal isOpen={openPost} onClose={setOpenPost} />}
+    </>
   );
 }
 
