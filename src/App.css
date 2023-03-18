@@ -1,0 +1,15 @@
+.alice-carousel__wrapper {
+  margin-top: 1.5rem;
+}
+
+.alice-carousel__dots {
+  margin: 0;
+}
+
+.alice-carousel__prev-btn,
+.alice-carousel__prev-btn-item,
+.alice-carousel__next-btn,
+.alice-carousel__next-btn-item {
+  padding: 0;
+  transform: scale(1.5);
+}
