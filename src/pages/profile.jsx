@@ -57,6 +57,11 @@ const posts = [
 ]
 
 function ProfilePage() {
+  const responsive = {
+    0: { items: 1 },
+    568: { items: 2 },
+    1024: { items: 3 },
+}
   const handleDragStart = (e) => e.preventDefault();
 
   return (
@@ -64,7 +69,7 @@ function ProfilePage() {
       <img alt='profile_banner_image' src={profile_banner} className='w-full max-h-[180px] object-cover' />
       <div className='px-4 mb-4'>
         <div className='flex'>
-          <img alt='Name' src={profile_pic} className='z-10 -mt-[50px] h-[160px] w-[160px] rounded-full border border-4 border-white' />
+          <img alt='Name' src={profile_pic} className='z-10 -mt-[50px] h-[160px] w-[160px] rounded-full  border-4 border-white' />
           <div className='flex flex-end flex-1 items-center justify-end'>
             <button className='mr-3 px-4 py-2 rounded outline-none border hover:border-transparent hover:bg-blue-400 hover:text-white'>Edit Profile</button>
           </div>
@@ -101,12 +106,12 @@ function ProfilePage() {
           <span className='mx-2 text-gray-500'>•</span>
           <span className='text-sm'>Information Technology</span>
         </div>
-        <div className='p-3 px-6 border border-gray-300 mt-3 rounded w-full'>
+        {/* <div className='p-3 px-6 border border-gray-300 mt-3 rounded w-full'>
           <p className='text-lg font-medium'>Posts</p>
           <hr className='border-black-500'></hr>
           <AliceCarousel mouseTracking keyboardNavigation='true' responsive={{ items: 3, itemsFit: 'fill' }} items={
             posts.map(({ id, title, description, tags }) => (
-              <div className='w-fit rounded max-w-xs border border-gray-500 p-2 flex flex-col gap-4 max-h-[180px] min-h-[181px] overflow-y-scroll mb-8' key={id} onDragStart={handleDragStart} role="presentation">
+              <div className='w-full rounded max-w-xs border border-gray-500 p-2 flex flex-col gap-4  overflow-y-scroll mb-8' key={id} onDragStart={handleDragStart} role="presentation">
                 <p className='max-w-full underline'>{title}</p>
                 <hr className='border-black-700'></hr>
                 <p className='text-sm'>{description}</p>
@@ -117,7 +122,58 @@ function ProfilePage() {
               </div>
             ))
           } />
+        </div> */}
+        <div className='p-3 px-6 border border-gray-300 mt-3 rounded w-full'>
+  <p className='text-lg font-medium'>Posts</p>
+  <hr className='border-black-500'></hr>
+  <AliceCarousel
+        mouseTracking
+        items={
+      posts.map(({ id, title, description, tags }) => (
+        <div
+          className='w-fit rounded max-w-xs border border-gray-500 p-2 flex flex-col gap-4  overflow-y-scroll mb-8'
+          key={id}
+          onDragStart={handleDragStart}
+          role='presentation'
+        >
+          <p className='max-w-full underline'>{title}</p>
+          <hr className='border-black-700'></hr>
+          <p className='text-sm'>{description}</p>
+          <p className='max-w-full bg-gray-300 rounded-b p-1'>
+            <span className='text-sm'>Posted by: </span>
+            <span className='text-sm font-medium'>@username</span>
+          </p>
         </div>
+      ))
+    }
+        responsive={responsive}
+        controlsStrategy="alternate"
+    />
+  {/* <AliceCarousel
+    mouseTracking
+    keyboardNavigation='true'
+    responsive={{ items: 3, itemsFit: 'fill' }}
+    items={
+      posts.map(({ id, title, description, tags }) => (
+        <div
+          className='w-full rounded max-w-xs border border-gray-500 p-2 flex flex-col gap-4  overflow-y-scroll mb-8'
+          key={id}
+          onDragStart={handleDragStart}
+          role='presentation'
+        >
+          <p className='max-w-full underline'>{title}</p>
+          <hr className='border-black-700'></hr>
+          <p className='text-sm'>{description}</p>
+          <p className='max-w-full bg-gray-300 rounded-b p-1'>
+            <span className='text-sm'>Posted by: </span>
+            <span className='text-sm font-medium'>@username</span>
+          </p>
+        </div>
+      ))
+    }
+  /> */}
+</div>
+
       </div>
     </main>
   );
