@@ -1,6 +1,11 @@
 import PostModal from "../Post/Modal"
-
+import { useState } from "react";
 function PostFeedSection() {
+   const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
+  };
   // Dummy data for posts
   const posts = [
     {
@@ -12,6 +17,7 @@ function PostFeedSection() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
       likes: 15,
       comments: 30,
+      tags: ["tech", "trends", "software", "development"],
     },
     {
       id: 2,
@@ -22,6 +28,7 @@ function PostFeedSection() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
       likes: 8,
       comments: 1,
+      tags: ["tech", "trends", "software", "development"],
     },
     {
       id: 3,
@@ -32,6 +39,7 @@ function PostFeedSection() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
       likes: 12,
       comments: 5,
+      tags: ["tech", "trends", "software", "development"],
     },
     {
       id: 4,
@@ -42,6 +50,7 @@ function PostFeedSection() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
       likes: 8,
       comments: 1,
+      tags: ["tech", "trends", "software", "development"],
     },
     {
       id: 5,
@@ -52,6 +61,7 @@ function PostFeedSection() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
       likes: 12,
       comments: 5,
+      tags: ["tech", "trends", "software", "development"],
     },
   ];
 
@@ -59,7 +69,7 @@ function PostFeedSection() {
     <div className="">
       <PostModal />
       {/* Title */}
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Feed</h3>
+      <h3 className="text-lg font-semibold text-blue-600 mb-4">Your Feed</h3>
 
       {/* Post Cards */}
       <div className="grid grid-cols-1 gap-4 overflow-y-scroll h-[90vh]  ">
@@ -79,7 +89,7 @@ function PostFeedSection() {
 
               {/* Name and Title */}
               <div>
-                <h4 className="text-base font-semibold text-gray-800">
+                <h4 className="text-base font-semibold text-gray-600">
                   {post.name}
                 </h4>
                 <p className="text-sm text-gray-500">{post.title}</p>
@@ -87,28 +97,34 @@ function PostFeedSection() {
             </div>
 
             {/* Post Title */}
-            <h5 className="text-base font-semibold text-gray-800 mb-2">
+            <h5 className="text-base font-semibold text-gray-700 mb-2">
               {post.postTitle}
             </h5>
 
             {/* Post Description */}
             <p className="text-sm text-gray-600 mb-4">{post.postDescription}</p>
-
+            
             {/* Likes and Comments */}
             <div className="flex items-center text-sm text-gray-500">
               <span className="mr-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-heart"
-                  viewBox="0 0 16 16"
-                >
-                  {" "}
-                  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />{" "}
-                </svg>
-                {post.likes}
+                <button onClick={handleFavoriteClick} className="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill={isFavorite ? "#e71f1f" : "#d7d2dd"}
+                    class="bi bi-heart-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    {" "}
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                    />{" "}
+                  </svg>
+
+                  {post.likes}
+                </button>
               </span>
               <span>
                 <svg
@@ -125,54 +141,6 @@ function PostFeedSection() {
                 {post.comments}
               </span>
             </div>
-
-            {/* Like and Comment Section */}
-            {/* <div className="flex items-center text-sm text-gray-500">
-              <button className="bg-transparent rounded-md p-1 mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <span className="mr-4">
-                {post.likes} {post.likes === 1 ? "Like" : "Likes"}
-              </span>
-              <button className="bg-transparent rounded-md p-1 mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 5h4a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h4m6 0l2-2h-8a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7l-2-2z"
-                  />
-                </svg>
-              </button>
-              <span>
-                {post.comments} {post.comments === 1 ? "Comment" : "Comments"}
-              </span>
-            </div> */}
 
             {/* Comment Section */}
             <div className="mt-4">
@@ -206,10 +174,10 @@ function PostFeedSection() {
                   </div>
                   <div className="flex-1 p-2 bg-gray-100 rounded-md">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-gray-800">John Doe</span>
-                      <span className="text-gray-500 text-xs">2 hours ago</span>
+                      <span className="font-bold text-gray-600">John Doe</span>
+                      <span className="text-gray-700 text-xs">2 hours ago</span>
                     </div>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-gray-500">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Voluptas modi debitis dolore voluptatem quidem tempore nam
                       quae aperiam. Modi expedita eum unde fuga debitis saepe
@@ -229,10 +197,10 @@ function PostFeedSection() {
                   </div>
                   <div className="flex-1 p-2 bg-gray-100 rounded-md">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-gray-800">Jane Doe</span>
-                      <span className="text-gray-500 text-xs">5 hours ago</span>
+                      <span className="font-bold text-gray-600">Jane Doe</span>
+                      <span className="text-gray-700 text-xs">5 hours ago</span>
                     </div>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-gray-500">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Voluptas modi debitis dolore voluptatem quidem tempore nam
                       quae aperiam. Modi expedita eum unde fuga debitis saepe

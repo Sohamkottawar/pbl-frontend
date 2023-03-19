@@ -84,11 +84,11 @@ function RecommendationsSection() {
               className="rounded-full h-20 w-20 object-cover mb-2"
             />
             <button
-      onClick={handleButtonClick}
-      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded absolute right-4"
-    >
-      {isChatting ? 'Request to Chat' : 'Chat'}
-    </button>
+              onClick={handleButtonClick}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded absolute right-4"
+            >
+              {isChatting ? "Request to Chat" : "Chat"}
+            </button>
 
             {/* Name */}
             <h4 className="text-base font-semibold text-gray-800 mb-1">
@@ -96,8 +96,11 @@ function RecommendationsSection() {
             </h4>
 
             {/* Skills */}
-            <p className="text-sm text-gray-500">
-              {recommendation.skills.join(", ")}
+            <p className="text-sm text-gray-700 w-full font-semibold">
+              Skills:{" "}
+              <span className="text-gray-500 font-normal">
+                {recommendation.skills.join(", ")}
+              </span>
             </p>
           </div>
         ))}
