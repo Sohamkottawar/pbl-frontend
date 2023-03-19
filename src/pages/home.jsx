@@ -11,17 +11,17 @@ function Home() {
   return (
     <div className="flex flex-row">
       {/* Profile Section on the left */}
-      <div className="md:w-1/4 bg-red-400 p-4 hidden md:block ">
+      <div className="md:w-1/4 bg-white p-4 hidden md:block ">
         {isLoggedIn ? <ProfileSection /> : <h2 className='text-2xl cursor-pointer underline' onClick={navigate('/auth')}>Please Login</h2>}
       </div>
 
       {/* Post and Feed Section in the center */}
-      <div className="w-full md:w-1/2 bg-gray-700 p-4">
+      <div className="w-full md:w-1/2 bg-gray-100 p-4">
         <PostFeedSection />
       </div>
 
       {/* Recommendations Section on the right */}
-      <div className="md:w-1/4 bg-blue-700 p-4 hidden md:block">
+      <div className="md:w-1/4 bg-white p-4 hidden md:block">
         {isLoggedIn ? <RecommendationsSection /> : <h2 className='text-2xl cursor-pointer underline' onClick={navigate('/auth')}>Please Login</h2>}
       </div>
     </div>

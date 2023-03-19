@@ -11,15 +11,19 @@ function ProfileSection() {
       />
 
       {/* Name */}
-      <h1 className="text-2xl font-bold text-gray-900 mb-1">John Doe</h1>
+      <h1 className="text-2xl font-bold text-blue-600 mb-1">John Doe</h1>
 
       {/* Title */}
-      <h2 className="text-lg font-semibold text-gray-700 mb-1">
+      <h2 className="text-lg font-semibold text-gray-500 mb-1">
         Software Developer
       </h2>
 
       {/* Username */}
-      <p className="text-sm text-gray-500">@johndoe</p>
+      <a href="./profile/username">
+        <p className="text-sm text-gray-500 hover:text-blue-400 cursor-pointer">
+          @johndoe
+        </p>
+      </a>
     </div>
   );
 }
