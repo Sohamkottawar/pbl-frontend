@@ -1,86 +1,29 @@
-import React from "react";
 import { useState } from "react";
+import { useGetRecommendations } from '../../hooks/recommendations.hook';
+
 function RecommendationsSection() {
-  
+  const { isLoading, data } = useGetRecommendations()
   const [isChatting, setIsChatting] = useState(false);
 
   const handleButtonClick = () => {
     setIsChatting((prevState) => !prevState);
-  };
-  // Dummy data for recommendations
-  const recommendations = [
-    {
-      id: 1,
-      name: "Jane Smith",
-      image: "https://via.placeholder.com/150",
-      skills: [
-        "Software Development",
-        "Agile Methodologies",
-        "Team Management",
-      ],
-    },
-    {
-      id: 2,
-      name: "Bob Johnson",
-      image: "https://via.placeholder.com/150",
-      skills: ["Project Management", "Budgeting", "Risk Management"],
-    },
-    {
-      id: 3,
-      name: "Lisa Rodriguez",
-      image: "https://via.placeholder.com/150",
-      skills: [
-        "Marketing Strategy",
-        "Social Media Marketing",
-        "Content Creation",
-      ],
-    },
-    {
-      id: 4,
-      name: "Jane Smith",
-      image: "https://via.placeholder.com/150",
-      skills: [
-        "Software Development",
-        "Agile Methodologies",
-        "Team Management",
-      ],
-    },
-    {
-      id: 5,
-      name: "Bob Johnson",
-      image: "https://via.placeholder.com/150",
-      skills: ["Project Management", "Budgeting", "Risk Management"],
-    },
-    {
-      id: 6,
-      name: "Lisa Rodriguez",
-      image: "https://via.placeholder.com/150",
-      skills: [
-        "Marketing Strategy",
-        "Social Media Marketing",
-        "Content Creation",
-      ],
-    },
-  ];
-  
+  }
+
   return (
     <div className="relative">
-      {/* Title */}
       <h3 className="text-lg font-semibold text-gray-800 mb-4">
         People You May Know
       </h3>
-
-      {/* Recommendation Cards */}
       <div className="grid grid-cols-1 gap-4  overflow-y-scroll h-[90vh] relative">
-        {recommendations.map((recommendation) => (
+        {!isLoading ? data.data.map(recommendation => (
           <div
             key={recommendation.id}
             className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center"
           >
             {/* Image */}
             <img
-              src={recommendation.image}
-              alt={recommendation.name}
+              src='https://source.unsplash.com/random/400x400'
+              alt={recommendation.user.first_name + " " + recommendation.user.last_name}
               className="rounded-full h-20 w-20 object-cover mb-2"
             />
             <button
@@ -92,7 +35,7 @@ function RecommendationsSection() {
 
             {/* Name */}
             <h4 className="text-base font-semibold text-gray-800 mb-1">
-              {recommendation.name}
+              {recommendation.user.first_name + " " + recommendation.user.last_name}
             </h4>
 
             {/* Skills */}
@@ -103,7 +46,11 @@ function RecommendationsSection() {
               </span>
             </p>
           </div>
-        ))}
+        )) : (
+          <div className="text-center text-gray-500 text-xl font-bold">
+            Loading...
+          </div>
+        )}
         <br />
         <br />
         <br />

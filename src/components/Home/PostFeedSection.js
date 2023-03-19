@@ -1,70 +1,21 @@
-import PostModal from "../Post/Modal";
-import { useGetPosts } from "../../hooks/posts.hook";
 import { useState } from "react";
-function PostFeedSection() {
-   const [isFavorite, setIsFavorite] = useState(false);
+import { useGetPosts, useGetPostsComments } from "../../hooks/posts.hook";
+import PostModal from "../Post/Modal";
 
-  const handleFavoriteClick = () => {
-    setIsFavorite(!isFavorite);
-  };
+function PostFeedSection() {
   const { isLoading, data } = useGetPosts()
-  const posts = [
-    {
-      id: 1,
-      name: "John Doe",
-      title: "Software Engineer at XYZ Corp",
-      postTitle: "My thoughts on the latest tech trends",
-      postDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
-      likes: 15,
-      comments: 30,
-      tags: ["tech", "trends", "software", "development"],
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      title: "Marketing Manager at ABC Inc",
-      postTitle: "Tips for creating engaging social media content",
-      postDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
-      likes: 8,
-      comments: 1,
-      tags: ["tech", "trends", "software", "development"],
-    },
-    {
-      id: 3,
-      name: "Bob Johnson",
-      title: "Project Manager at LMN Corp",
-      postTitle: "How to manage remote teams effectively",
-      postDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
-      likes: 12,
-      comments: 5,
-      tags: ["tech", "trends", "software", "development"],
-    },
-    {
-      id: 4,
-      name: "Jane Smith",
-      title: "Marketing Manager at ABC Inc",
-      postTitle: "Tips for creating engaging social media content",
-      postDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
-      likes: 8,
-      comments: 1,
-      tags: ["tech", "trends", "software", "development"],
-    },
-    {
-      id: 5,
-      name: "Bob Johnson",
-      title: "Project Manager at LMN Corp",
-      postTitle: "How to manage remote teams effectively",
-      postDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod lacinia ex eget mollis. Nam pulvinar lacus eu eros accumsan feugiat.",
-      likes: 12,
-      comments: 5,
-      tags: ["tech", "trends", "software", "development"],
-    },
-  ];
+  const [isFavorite, setIsFavorite] = useState([])
+  const [comments, setComments] = useState([])
+  const [openComment, setOpenComment] = useState('')
+  const { isLoading: isCommentsLoading, data: commentsData, refetch } = useGetPostsComments(openComment)
+
+  const handleFavoriteClick = (index) => {
+    setIsFavorite(prevIndex => prevIndex.includes(index) ? prevIndex.filter(item => item !== index) : [...prevIndex, index]);
+  }
+
+  function handlePostComment(post) {
+
+  }
 
   return (
     <div className="">
@@ -74,60 +25,64 @@ function PostFeedSection() {
 
       {/* Post Cards */}
       <div className="grid grid-cols-1 gap-4 overflow-y-scroll h-[90vh]  ">
-        {!isLoading ? posts.map((post) => (
+        {!isLoading ? data?.data?.map((post, index) => (
           <div
             key={post.id}
             className="bg-white rounded-lg shadow-md p-4 flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-4 w-full">
               {/* Profile Image */}
               <img
                 src="https://via.placeholder.com/150"
-                alt={post.name}
+                alt={post.student.user.first_name + " " + post.student.user.last_name}
                 className="rounded-full h-8 w-8 object-cover mr-2"
               />
 
               {/* Name and Title */}
               <div>
                 <h4 className="text-base font-semibold text-gray-600">
-                  {post.name}
+                  {post.student.user.first_name + " " + post.student.user.last_name}
                 </h4>
-                <p className="text-sm text-gray-500">{post.title}</p>
+                <p className="text-sm text-gray-500">{post.student.title}</p>
               </div>
+              <date className='flex-1 text-right text-gray-600 mr-3'>{post.created_at.split('T')[0]}</date>
             </div>
 
             {/* Post Title */}
             <h5 className="text-base font-semibold text-gray-700 mb-2">
-              {post.postTitle}
+              {post.title}
             </h5>
 
             {/* Post Description */}
-            <p className="text-sm text-gray-600 mb-4">{post.postDescription}</p>
+            <p className="text-sm text-gray-600 mb-4">{post.description}</p>
 
             {/* Likes and Comments */}
             <div className="flex items-center text-sm text-gray-500">
               <span className="mr-4">
-                <button onClick={handleFavoriteClick} className="">
+                <button onClick={() => handleFavoriteClick(index)} className="">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
-                    fill={isFavorite ? "#e71f1f" : "#d7d2dd"}
+                    fill={isFavorite.includes(index) || post.isLikedByCurrentUser ? "#e71f1f" : "#d7d2dd"}
                     class="bi bi-heart-fill"
                     viewBox="0 0 16 16"
                   >
                     {" "}
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                     />{" "}
                   </svg>
 
-                  {post.likes}
+                  {post.likes.length}
                 </button>
               </span>
-              <span>
+              <span onClick={() => {
+                setOpenComment(post.id)
+                refetch()
+              }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="17"
@@ -157,59 +112,39 @@ function PostFeedSection() {
                   <textarea
                     placeholder="Write a comment..."
                     className="w-full border border-gray-200 rounded-md p-2"
+                    value={comments[index]}
+                    onChange={(e, index) => setComments(prevComments => {
+                      const newComments = { ...prevComments }
+                      newComments[index] = e.target.value
+                      return newComments;
+                    })}
                   ></textarea>
                 </div>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-md" onClick={() => handlePostComment(post.id)}>
                   Post
                 </button>
               </div>
-              <div className="mt-4 space-y-4">
-                {/* Comment Card */}
-                <div className="flex space-x-4">
-                  <div className="w-10 h-10">
-                    <img
-                      src="https://source.unsplash.com/random/401x401"
-                      alt="User"
-                      className="w-full h-full rounded-full"
-                    />
-                  </div>
-                  <div className="flex-1 p-2 bg-gray-100 rounded-md">
-                    <div className="flex items-center justify-between">
-                      <span className="font-bold text-gray-600">John Doe</span>
-                      <span className="text-gray-700 text-xs">2 hours ago</span>
-                    </div>
-                    <p className="text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Voluptas modi debitis dolore voluptatem quidem tempore nam
-                      quae aperiam. Modi expedita eum unde fuga debitis saepe
-                      nobis itaque, ea aspernatur recusandae?
-                    </p>
-                  </div>
-                </div>
-
-                {/* Comment Card */}
-                <div className="flex space-x-4">
-                  <div className="w-10 h-10">
-                    <img
-                      src="https://source.unsplash.com/random/402x402"
-                      alt="User"
-                      className="w-full h-full rounded-full"
-                    />
-                  </div>
-                  <div className="flex-1 p-2 bg-gray-100 rounded-md">
-                    <div className="flex items-center justify-between">
-                      <span className="font-bold text-gray-600">Jane Doe</span>
-                      <span className="text-gray-700 text-xs">5 hours ago</span>
-                    </div>
-                    <p className="text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Voluptas modi debitis dolore voluptatem quidem tempore nam
-                      quae aperiam. Modi expedita eum unde fuga debitis saepe
-                      nobis itaque, ea aspernatur recusandae?
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {openComment === post.id && <div className="mt-4 space-y-4">
+                {isCommentsLoading ? (
+                  <div className="text-center text-gray-500 text-xl font-bold">Loading...</div>) :
+                  (commentsData && commentsData.comments.map(comment => (
+                    <div className="flex space-x-4">
+                      <div className="w-10 h-10">
+                        <img
+                          src="https://source.unsplash.com/random/401x401"
+                          alt="User"
+                          className="w-full h-full rounded-full"
+                        />
+                      </div>
+                      <div className="flex-1 p-2 bg-gray-100 rounded-md">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-gray-600">{comment.student.user.first_name + ' ' + comment.student.user.last_name}</span>
+                          {/* <span className="text-gray-700 text-xs">2 hours ago</span> */}
+                        </div>
+                        <p className="text-sm text-gray-500">{comment.content}</p>
+                      </div>
+                    </div>)))}
+              </div>}
             </div>
           </div>
         )) : (

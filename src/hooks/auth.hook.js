@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { loginUser, signUpUser } from '../api';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { loginUser, signUpUser, getProfile } from '../api';
 import { toast } from '../components';
 import errorParser from '../utils/errorParser';
+import { useNavigate } from 'react-router-dom';
 
 function useLoginUser(setErrors) {
+  const navigate = useNavigate()
   const { mutate, isLoading, isSuccess } = useMutation(loginUser, {
     onError: (err) => {
       const parsedError = errorParser(err)
@@ -19,6 +21,7 @@ function useLoginUser(setErrors) {
       toast.success('Logged in successfully!', { autoClose: 5000 })
       localStorage.setItem('refresh', data?.data?.refresh)
       localStorage.setItem('access', data?.data?.access)
+      navigate(-1)
     }
   })
 
@@ -41,6 +44,25 @@ function useSignUpUser(step_no, setErrors) {
   return { mutate, isLoading, isSuccess }
 }
 
+function useGetProfile() {
+  const navigate = useNavigate()
+  const { isLoading, isError, data, error } = useQuery({ queryKey: ['profile'], queryFn: getProfile })
+  if (isError) {
+    const parsedError = errorParser(error)
+    if (parsedError.server) toast.error(parsedError.server, { autoClose: 5000 })
+    else {
+      if (error.response.status === 401) {
+        toast.error('You are not authorized to access this page.', { autoClose: 5000 })
+        navigate('/auth')
+      }
+      parsedError.error && toast.error(parsedError[Object.keys(parsedError)[0]], { autoClose: 5000 })
+      toast.error('Errors while fetching profile data. Please check and try again.', { autoClose: 5000 })
+    }
+  }
+
+  return { isLoading, data }
+}
+
 const useLocalStorageState = (key, defaultValue) => {
   const [state, setState] = useState(() => {
     const storedValue = localStorage.getItem(key)
@@ -61,5 +83,6 @@ const useLocalStorageState = (key, defaultValue) => {
 export {
   useLoginUser,
   useSignUpUser,
+  useGetProfile,
   useLocalStorageState,
 }
