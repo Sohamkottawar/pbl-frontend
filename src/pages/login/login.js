@@ -35,9 +35,7 @@ function Login({ setID }) {
       return
     }
     delete formProps.confirmPassword
-    loginMutation.mutate(formProps, {
-      onSuccess: () => navigator(-1)
-    })
+    loginMutation.mutate(formProps)
   }
 
   useEffect(() => {
