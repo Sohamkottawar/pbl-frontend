@@ -1,7 +1,10 @@
+import SendbirdApp from "@sendbird/uikit-react/App";
+import "@sendbird/uikit-react/dist/index.css";
 import Left from "../components/Messages/Message_left"
 import Middle from "../components/Messages/Message_middle";
 import Right from "../components/Messages/Message_right";
- function Message() {
+
+function Message() {
   return (
     <div className="flex flex-row">
       {/* Profile Section on the left */}
@@ -10,8 +13,12 @@ import Right from "../components/Messages/Message_right";
       </div>
 
       {/* Post and Feed Section in the center */}
-      <div className="w-full md:w-1/2 bg-gray-700 p-4">
-        <Middle />
+      <div className="w-full md:w-1/2 bg-gray-700 p-4 h-screen">
+        {/* <Middle /> */}
+        <SendbirdApp
+          appId='68BE6A4A-0F0A-4D7A-B255-0A82A0F4D252'
+          userId='2ff72c7d4712ab37955d9f2a391c57859f493c41'
+        />
       </div>
 
       {/* Recommendations Section on the right */}
@@ -21,5 +28,5 @@ import Right from "../components/Messages/Message_right";
     </div>
   );
 }
-    export default Message;
+export default Message;
 
