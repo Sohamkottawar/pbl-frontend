@@ -91,9 +91,9 @@ function Form({ id }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className='flex flex-col justify-center  w-2/3 mx-auto mt-24 bg-gray-300 p-4 text-left'
+      className='flex flex-col justify-center mb-8  w-2/3 mx-auto mt-24 bg-gray-200 bg-opacity-80 p-4 text-left rounded-md'
     >
-      <label className='text-gray-800 font-semibold text-left '>Title:</label>
+      <label className='text-gray-600 font-semibold text-left '>Title:</label>
       <input
         type='text'
         onChange={handleTitleChange}
@@ -102,7 +102,7 @@ function Form({ id }) {
         className='w-full p-2 mb-4 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500'
       />
 
-      <label className='text-gray-800 font-semibold'>About me:</label>
+      <label className='text-gray-600 font-semibold'>About me:</label>
       <textarea
         onChange={handleAboutChange}
         value={about_me}
@@ -112,7 +112,7 @@ function Form({ id }) {
 
       <div className='w-full flex flex-col sm:flex-row justify-between items-center'>
         <div className='w-full sm:w-1/2 sm:mr-2'>
-          <label className='text-gray-800 font-semibold'>Phone No.:</label>
+          <label className='text-gray-600 font-semibold'>Phone No.:</label>
           <input
             type='text'
             onChange={handlePhoneChange}
@@ -122,7 +122,7 @@ function Form({ id }) {
           />
         </div>
         <div className='w-full sm:w-1/2'>
-          <label className='text-gray-800 font-semibold'>D.O.B:</label>
+          <label className='text-gray-600 font-semibold'>D.O.B:</label>
           <input
             type='date'
             onChange={handleDobChange}
@@ -134,7 +134,7 @@ function Form({ id }) {
       </div>
       <div className='w-full flex flex-col sm:flex-row justify-between items-center'>
         <div className='w-full sm:w-1/2 sm:mr-2'>
-          <label className='text-gray-800 font-semibold'>College Name:</label>
+          <label className='text-gray-600 font-semibold'>College Name:</label>
           <input
             type='text'
             onChange={handleCollegeNameChange}
@@ -144,7 +144,7 @@ function Form({ id }) {
           />
         </div>
         <div className='w-full sm:w-1/2'>
-          <label className='text-gray-800 font-semibold'>College City:</label>
+          <label className='text-gray-600 font-semibold'>College City:</label>
           <input
             type='text'
             onChange={handleCollegeCityChange}
@@ -157,7 +157,7 @@ function Form({ id }) {
 
       <div className='w-full flex flex-col sm:flex-row justify-between items-center'>
         <div className='w-full sm:w-1/2 sm:mr-2'>
-          <label className='text-gray-800 font-semibold'>Current year:</label>
+          <label className='text-gray-600 font-semibold'>Current year:</label>
           <select
             onChange={handleYearChange}
             value={current_year}
@@ -172,7 +172,7 @@ function Form({ id }) {
           </select>
         </div>
         <div className='w-full sm:w-1/2'>
-          <label className='text-gray-800 font-semibold'>Branch:</label>
+          <label className='text-gray-600 font-semibold'>Branch:</label>
           <select
             onChange={handleBranchChange}
             value={branch}
@@ -233,7 +233,7 @@ function Form({ id }) {
       </div>
       <div className='w-full flex flex-col sm:flex-row justify-between items-center'>
         <div className='w-full sm:w-1/2 sm:mr-2'>
-          <label className='text-gray-800 font-semibold'>Gender:</label>
+          <label className='text-gray-600 font-semibold'>Gender:</label>
           <select
             onChange={handleGenderChange}
             value={gender}
@@ -250,10 +250,10 @@ function Form({ id }) {
         <AddSkills skills={skills} setSkills={setSkills} />
       </div>
 
-      <div className='w-full flex flex-col md:flex-row mb-4'>
-        <div className='w-full md:w-1/2 md:mr-2 mb-4 md:mb-0'>
+      <div className='w-full flex flex-col md:flex-row'>
+        <div className='w-full md:w-1/2 md:mr-2 md:mb-0'>
           <span className='block font-medium text-gray-700 mb-2'>
-            Do you want to openly chat to others?
+            Do you want to openly chat with others?
           </span>
           <div className='flex items-center'>
             <label htmlFor='yes' className='mr-2'>
@@ -276,7 +276,7 @@ function Form({ id }) {
         </div>
       </div>
 
-      <div className='flex justify-center mt-6'>
+      <div className='flex justify-center'>
         <button
           className='px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700'
         >

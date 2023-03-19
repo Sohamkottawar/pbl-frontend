@@ -44,7 +44,7 @@ function AddSkills({ skills, setSkills }) {
 
   return (
     <div className='w-full sm:w-1/2 sm:mr-2'>
-      <h1 className='text-gray-800 font-semibold'>Skills:</h1>
+      <h1 className='text-gray-800 font-semibold -mt-4'>Skills:</h1>
 
       <ReactTags
         tags={skills}

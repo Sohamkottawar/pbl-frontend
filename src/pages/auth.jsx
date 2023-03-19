@@ -3,7 +3,7 @@ import Login from '../pages/login/login';
 import CompleteLogin from '../pages/login/completeLogin';
 
 function Auth() {
-  const [id, setID] = useState('');
+  const [id, setID] = useState('2');
 
   return (
     <>

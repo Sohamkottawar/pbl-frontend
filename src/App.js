@@ -4,6 +4,7 @@ import { HomePage, Auth, ProfilePage, Recommendations, Messages } from './pages'
 import './App.css';
 import QnA from "./pages/QnA"
 import Answers from "./pages/answers"
+import EditModal from "./components/Post/EditModal"
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/messages" element={<Messages />} />
           <Route path="/qna" element={<QnA />} />
           <Route path="/answers" element={<Answers />} />
+          <Route path="/edit-modal" element={<EditModal />} />
         </Routes>
       </div>
       <Footer />
