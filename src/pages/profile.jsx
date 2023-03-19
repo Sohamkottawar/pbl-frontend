@@ -1,4 +1,5 @@
 import AliceCarousel from 'react-alice-carousel';
+import EditModal from "../components/Post/EditModal";
 import ContactModal from "../components/ContactModal";
 import 'react-alice-carousel/lib/alice-carousel.css';
 import profile_banner from '../assets/images/profile_banner.jpeg';
@@ -65,16 +66,19 @@ function ProfilePage() {
 }
   const handleDragStart = (e) => e.preventDefault();
   const [openPost, setOpenPost] = useState(false);
+  const [openPost1, setOpenPost1] = useState(false);
+
 
   return (
     <>
+    <EditModal/>
     <main className='mx-auto my-10 rounded-lg md:w-3/5 w-11/12 border border-gray-500 shadow-lg'>
       <img alt='profile_banner_image' src={profile_banner} className='w-full max-h-[180px] object-cover' />
       <div className='px-4 mb-4'>
         <div className='flex'>
           <img alt='Name' src={profile_pic} className='z-10 -mt-[50px] h-[160px] w-[160px] rounded-full  border-4 border-white' />
           <div className='flex flex-end flex-1 items-center justify-end'>
-            <button className='mr-3 px-4 py-2 rounded outline-none border hover:border-transparent hover:bg-blue-400 hover:text-white'>Edit Profile</button>
+            <button onClick={() => setOpenPost1(prevState => !prevState)} className='mr-3 px-4 py-2 rounded outline-none border hover:border-transparent hover:bg-blue-400 hover:text-white'>Edit Profile</button>
           </div>
         </div>
         <div className='flex items-center'>
@@ -181,6 +185,8 @@ function ProfilePage() {
 
     </main>
     {openPost && <ContactModal isOpen={openPost} onClose={setOpenPost} />}
+      {openPost1 && <EditModal isOpen={openPost1} onClose={setOpenPost1} />}
+
     </>
   );
 }

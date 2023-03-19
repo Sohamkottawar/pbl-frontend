@@ -25,7 +25,9 @@ const sampleData = [
 const MRight = () => {
   return (
     <div className="flex flex-col">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">Pending Requests</h3>
+      <h3 className="text-lg font-semibold text-blue-600 mb-2 mt-4">
+        Pending Requests
+      </h3>
 
       {sampleData.map((data) => (
         <div key={data.id} className="w-full">

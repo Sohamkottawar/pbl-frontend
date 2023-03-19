@@ -81,7 +81,7 @@ function PostFeedSection() {
               </span>
               <span onClick={() => {
                 setOpenComment(post.id)
-                refetch()
+                // refetch()
               }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -126,8 +126,9 @@ function PostFeedSection() {
               </div>
               {openComment === post.id && <div className="mt-4 space-y-4">
                 {isCommentsLoading ? (
-                  <div className="text-center text-gray-500 text-xl font-bold">Loading...</div>) :
-                  (commentsData && commentsData.comments.map(comment => (
+                  <div className="text-center text-gray-500 text-xl font-bold">Loading...</div>
+                ) :
+                  (commentsData && commentsData.data.map(comment => (
                     <div className="flex space-x-4">
                       <div className="w-10 h-10">
                         <img

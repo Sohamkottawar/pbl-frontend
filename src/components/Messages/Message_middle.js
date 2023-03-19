@@ -45,9 +45,9 @@ const Chat = () => {
 
   return (
     <div className="flex flex-col h-screen">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">Inbox</h3>
+      <h3 className="text-lg font-semibold text-blue-600 mb-2 mt-4">Inbox</h3>
 
-      <div className="bg-white border-b border-gray-200 flex justify-between items-center px-4 py-2">
+      <div className="bg-gray-100 border border-gray-200 shadow-md shadow-gray-300 flex justify-between items-center px-4 py-2">
         <div className="flex items-center">
           <img
             className="w-10 h-10 rounded-full mr-4"
@@ -84,8 +84,8 @@ const Chat = () => {
               message.sender === "John" ? "text-right" : ""
             }`}
           >
-            <div className="bg-gray-100 rounded-lg inline-block py-2 px-4">
-              <div className="text-gray-700 font-semibold">
+            <div className="bg-white rounded-lg inline-block py-2 px-4">
+              <div className="text-gray-600 font-semibold">
                 {message.sender}
               </div>
               <div>{message.text}</div>
@@ -96,19 +96,19 @@ const Chat = () => {
       </div>
       <form
         onSubmit={handleFormSubmit}
-        className="bg-white border-t border-gray-200 px-4 py-2"
+        className="bg-gray-100  border-gray-200 px-4 py-2"
       >
-        <div className="flex">
+        <div className="flex ">
           <input
             type="text"
             placeholder="Type a message"
             value={inputText}
             onChange={handleInputChange}
-            className="border-gray-200 border rounded-full px-4 py-2 flex-1 mr-2"
+            className="w-full p-2 mr-3 text-gray-600 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 shadow-md shadow-gray-300"
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white font-bold rounded-full px-4 py-2"
+            className="bg-blue-500 text-white font-bold rounded-md px-4 py-2 shadow-md shadow-gray-300 hover:bg-blue-400"
           >
             Send
           </button>

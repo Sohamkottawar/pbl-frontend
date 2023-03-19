@@ -27,7 +27,7 @@ const messages = [
 const MessageList = () => {
   return (
     <div className="divide-y">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">Messages</h3>
+      <h3 className="text-lg font-semibold text-blue-600 mb-2 mt-4">Messages</h3>
 
       {messages.map((message) => (
         <div key={message.id} className="flex items-center py-2">

@@ -101,9 +101,7 @@ function Login({ setID }) {
               <label>
                 <input type='password' placeholder='Password' name='password' />
               </label>
-              <label>
-                <input type='password' placeholder='Confirm Password' name='confirmPassword' />
-              </label>
+             
               <a className='a-password-forget hover:text-cyan-400' href='/'>
                 Forgot your password?{' '}
               </a>

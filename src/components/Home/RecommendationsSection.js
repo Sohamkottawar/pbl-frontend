@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Tags } from "../../components";
 import { useGetRecommendations } from '../../hooks/recommendations.hook';
 
 function RecommendationsSection() {
@@ -39,10 +40,10 @@ function RecommendationsSection() {
             </h4>
 
             {/* Skills */}
-            <p className="text-sm text-gray-700 w-full font-semibold">
-              Skills:{" "}
+            <p className="flex text-sm text-gray-700 w-full font-semibold">
+              <span className="mt-3 pl-3">Skills :</span>
               <span className="text-gray-500 font-normal">
-                {recommendation.skills.join(", ")}
+                <Tags tags={recommendation.skills} />
               </span>
             </p>
           </div>

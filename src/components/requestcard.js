@@ -15,7 +15,7 @@ const Card = ({ name, college, imageUrl }) => {
         <p className="text-gray-600 text-xs">{college}</p>
       </div>
       <div className="ml-auto flex items-center">
-        <button className="px-4 py-2 bg-green-500 text-white rounded-lg mr-2 hover:bg-green-400">
+        <button className="px-2 py-1 bg-green-500 text-white rounded-md mr-2 hover:bg-green-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -30,7 +30,7 @@ const Card = ({ name, college, imageUrl }) => {
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
         </button>
-        <button className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-400">
+        <button className="px-2 py-1 bg-red-500 text-white rounded-md hover:bg-red-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
