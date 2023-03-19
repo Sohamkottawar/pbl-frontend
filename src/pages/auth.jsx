@@ -1,13 +1,14 @@
-// import Login from "../pages/login/login";
-import CompleteLogin from "../pages/login/completeLogin";
-import Apti from "../pages/login/skillCheckbox";
+import { useState } from 'react';
+import Login from '../pages/login/login';
+import CompleteLogin from '../pages/login/completeLogin';
+
 function Auth() {
+  const [id, setID] = useState('');
+
   return (
-    <div>
-      {/* <Login/> */}
-      {/* <Apti/> */}
-      <CompleteLogin/>
-    </div>
+    <>
+      {id === '' ? <Login setID={setID} /> : <CompleteLogin id={id} />}
+    </>
   );
 }
 

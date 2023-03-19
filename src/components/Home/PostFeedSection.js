@@ -1,7 +1,8 @@
-import PostModal from "../Post/Modal"
+import PostModal from "../Post/Modal";
+import { useGetPosts } from "../../hooks/posts.hook";
 
 function PostFeedSection() {
-  // Dummy data for posts
+  const { isLoading, data } = useGetPosts()
   const posts = [
     {
       id: 1,
@@ -63,7 +64,7 @@ function PostFeedSection() {
 
       {/* Post Cards */}
       <div className="grid grid-cols-1 gap-4 overflow-y-scroll h-[90vh]  ">
-        {posts.map((post) => (
+        {!isLoading ? posts.map((post) => (
           <div
             key={post.id}
             className="bg-white rounded-lg shadow-md p-4 flex flex-col"
@@ -243,7 +244,11 @@ function PostFeedSection() {
               </div>
             </div>
           </div>
-        ))}
+        )) : (
+          <div className="text-center text-gray-500 text-xl font-bold">
+            Loading...
+          </div>
+        )}
         <br />
         <br />
       </div>
