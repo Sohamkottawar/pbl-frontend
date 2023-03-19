@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar, Footer } from './components';
+import { Navbar, Footer, ToastUtils } from './components';
 import { HomePage, Auth, ProfilePage, Recommendations, Messages } from './pages';
 import './App.css';
 import QnA from "./pages/QnA"
@@ -7,6 +7,7 @@ import Answers from "./pages/answers"
 function App() {
   return (
     <BrowserRouter>
+      <ToastUtils />
       <Navbar />
       <div className="mt-[72px]">
         <Routes>

@@ -1,14 +1,18 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import ProfileSection from "../components/Home/ProfileSection";
 import PostFeedSection from "../components/Home/PostFeedSection";
 import RecommendationsSection from "../components/Home/RecommendationsSection";
+import { useLocalStorageState } from "../hooks/auth.hook";
 
 function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorageState('access', false)
+  const navigate = useNavigate()
+
   return (
     <div className="flex flex-row">
       {/* Profile Section on the left */}
       <div className="md:w-1/4 bg-white p-4 hidden md:block ">
-        <ProfileSection />
+        {isLoggedIn ? <ProfileSection /> : <h2 className='text-2xl cursor-pointer underline' onClick={navigate('/auth')}>Please Login</h2>}
       </div>
 
       {/* Post and Feed Section in the center */}
@@ -18,7 +22,7 @@ function Home() {
 
       {/* Recommendations Section on the right */}
       <div className="md:w-1/4 bg-white p-4 hidden md:block">
-        <RecommendationsSection />
+        {isLoggedIn ? <RecommendationsSection /> : <h2 className='text-2xl cursor-pointer underline' onClick={navigate('/auth')}>Please Login</h2>}
       </div>
     </div>
   );

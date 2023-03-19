@@ -1,5 +1,5 @@
 export const SKILLS = [
- "HTML",
+    "HTML",
     "CSS",
     "JavaScript",
     "React",
@@ -47,6 +47,4 @@ export const SKILLS = [
     "Jest",
     "Mocha",
     "Chai",
-
-
 ];
