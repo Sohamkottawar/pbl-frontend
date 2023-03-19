@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import profile_pic from '../assets/images/profile_pic.jpeg';
 import PostModal from './Post/Modal';
+import logo from "../assets/images/project_buddy_logo.png";
 
 function Navbar() {
   const [profileOpen, setProfileOpen] = useState(false);
@@ -16,12 +17,12 @@ function Navbar() {
 
   return (
     <>
-      <nav className='bg-white shadow sticky w-full z-[9999]'>
+      <nav className='bg-white shadow  z-[9999] fixed top-0 left-0 w-[100%] bg-opacity-75 backdrop-blur-md'>
         <div className='mx-auto px-8'>
           <div className='flex justify-between items-center py-4'>
             <div className='flex items-center'>
               <a href='/' className='font-bold text-xl text-indigo-500'>
-                LinkedIn
+                <img src={logo} alt="logo" className="h-10 w-10" />
               </a>
               <div className='ml-4 flex items-center text-gray-500 text-sm font-medium'>
                 <a href='/' className='hover:text-gray-900 px-3 py-2'>Home</a>
