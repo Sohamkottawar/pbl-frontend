@@ -4,10 +4,10 @@ function Recommendations() {
     // const { name, image, skills } = props.recommendation;
     const data = [
       {
-        name: "John Doe",
+        name: "Ted",
         image:
           "https://media.licdn.com/dms/image/D4D35AQG0He9fFObhKQ/profile-framedphoto-shrink_400_400/0/1675693716777?e=1679731200&v=beta&t=eVjsi_mZUYabCL8ylN8K-k46bE-87swVjX_ra0b7iog",
-        skills: ["Web", "Web Developer", "Web Developer"],
+        skills: ["Digital Marketing", "Web Developer", "Application Dev"],
         year: "First",
         college: "Pune Institute of Computer Technology",
       },
@@ -16,28 +16,27 @@ function Recommendations() {
         image:
           "https://media.licdn.com/dms/image/D4D35AQG0He9fFObhKQ/profile-framedphoto-shrink_400_400/0/1675693716777?e=1679731200&v=beta&t=eVjsi_mZUYabCL8ylN8K-k46bE-87swVjX_ra0b7iog",
         skills: [
-          "Web Developer",
-          "Web Developer",
-          "Web Developer",
-          "Web Developer",
+          "frontend Developer",
+          "Full stack",
+          "ML",
+          "Application decloper",
           
         ],
+        year: "Third",
+        college: "Pune Institute of Computer Technology",
+      },
+      {
+        name: "Lilly Tinson",
+        image:
+          "https://media.licdn.com/dms/image/D4D35AQG0He9fFObhKQ/profile-framedphoto-shrink_400_400/0/1675693716777?e=1679731200&v=beta&t=eVjsi_mZUYabCL8ylN8K-k46bE-87swVjX_ra0b7iog",
+        skills: ["Web Developer", "Dev ops", "Marketing"],
         year: "First",
         college: "Pune Institute of Computer Technology",
       },
       {
-        name: "John Doe",
-        image:
-          "https://media.licdn.com/dms/image/D4D35AQG0He9fFObhKQ/profile-framedphoto-shrink_400_400/0/1675693716777?e=1679731200&v=beta&t=eVjsi_mZUYabCL8ylN8K-k46bE-87swVjX_ra0b7iog",
-        skills: ["Web Developer", "Web Developer", "Web Developer"],
-        year: "First",
-        college: "Pune Institute of Computer Technology",
-      },
-      {
-        name: "John Doe",
-        image:
-          "https://media.licdn.com/dms/image/D4D35AQG0He9fFObhKQ/profile-framedphoto-shrink_400_400/0/1675693716777?e=1679731200&v=beta&t=eVjsi_mZUYabCL8ylN8K-k46bE-87swVjX_ra0b7iog",
-        skills: ["Web Developer", "Web Developer", "Web Developer"],
+        name: "Joy Lid",
+        image: "https://lexica.art/prompt/ae00c8ec-3604-4607-b0ef-b8a6e938fcd9",
+        skills: ["AI/ML", "Web Developer"],
         year: "First",
         college: "Pune Institute of Computer Technology",
       },

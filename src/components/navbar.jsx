@@ -75,7 +75,7 @@ function Navbar() {
                   <div className='flex items-center'>
                     <img alt='Abhishek_profile' src={profile_pic} className='rounded-full w-16 h-16' />
                     <div className='flex flex-col justify-center flex-1 pl-3'>
-                      <code className='text-gray-900 font-medium text-lg'>Abhishek Jadhav</code>
+                      <code className='text-gray-900 font-medium text-lg'>Admin</code>
                       <p className='text-gray-500 text-sm'>Full Stack Developer | Looking for Summer Internships</p>
                     </div>
                   </div>
